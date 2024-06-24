@@ -1,7 +1,8 @@
+
 const header = document.querySelector('header');
 const sec = document.querySelectorAll('section');
-const currentSec = document.querySelector('.current-section');
-const afterSec = document.querySelector('.next-section');
+const currentSec = document.querySelector('section.current');
+const afterSec = currentSec.nextElementSibling;
 const h2node = currentSec.previousElementSibling.children[0];
 const div2 = currentSec.parentElement;
 const allH2secs = Array.from(document.querySelectorAll('h2')).map(function(h2) {return h2.parentElement});
