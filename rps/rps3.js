@@ -39,9 +39,21 @@ function playRound(player1, player2) {
         console.log(`${player2.name} wins!`);
         return player2;
     }
+    //updateScores
+    function updateScores(player1, player2, winner) {
+        document.getElementById('score1').textContent = player1.score;
+        document.getElementById('score2').textContent = player2.score;
+
+        if (winner) {
+            document.getElementById('winnerName').textContent = winner.name;
+        }else{
+            document.getElementById('winnerName').textContent = "It's a tie!";
+        }
+        
+    }
 }
 
-//  playgame function
+//  playGame function
 function playGame(player1, player2, playUntil) {
     let score1 = 0;
     let score2 = 0;
@@ -54,6 +66,9 @@ function playGame(player1, player2, playUntil) {
             score2++;
         }
         console.log(`${player1.name}: ${score1}, ${player2.name}: ${score2}`);
+
+        //update scores
+        updateScores(player1, player2, winner);
     }
 
     if (score1 === playUntil) {
@@ -65,7 +80,7 @@ function playGame(player1, player2, playUntil) {
     }
 }
 
-// define playtournament function
+// define playTournament function
 function playTournament(player1, player2, player3, player4, playUntil) {
     const winner1 = playGame(player1, player2, playUntil);
     const winner2 = playGame(player3, player4, playUntil);
@@ -91,4 +106,4 @@ playGame(player1, player2, 3);
 
 //play tournament
 console.log("Starting a tournament:");
-playTournament(player1, player2, player3, player4, 3);
+playTournament(player1, player2, player3, player4,3);
