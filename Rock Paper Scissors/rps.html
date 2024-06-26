@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors Game</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-dark text-light">
+    <div class="container mt-5">
+        <div class="card text-center">
+            <div class="card-header">
+                Rock Paper Scissors
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Welcome to <b>The Game!</b></h5>
+                <p class="card-text">Play at your own <em>RISK.</em></p>
+            </div>
+        </div>
+        <div class="row text-center mt-4">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Player 1: Brittany</h5>
+                        <div id="player1-hand" class="display-6">Hand: </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Player 2: Chelsea</h5>
+                        <div id="player2-hand" class="display-6">Hand: </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Scoreboard</h5>
+                        <div id="player1-score" class="display-4">Player 1: 0</div>
+                        <div id="player2-score" class="display-4">Player 2: 0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary m-2" onclick="playRound(player1, player2)">Play Round</button>
+            <button class="btn btn-warning m-2" onclick="resetGame()">Reset</button>
+        </div>
+        <div class="text-center mt-4">
+            <h3 id="narrator"></h3>
+            <h3 id="winner-announcement"></h3>
+        </div>
+    </div>
+    <script src="rps2.js"></script>
+</body>
+</html>
