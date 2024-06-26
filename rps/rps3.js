@@ -1,22 +1,31 @@
-// define hands array
+// Define hands array
 const hands = ['rock', 'paper', 'scissors'];
 
-// define function that returns hands
+// Define function that returns hands
 function getHand() {
     return hands[parseInt(Math.random() * 10) % 3];
 }
 
-// two player objects
+// Two player objects
 const player1 = {
     name: 'Brittany',
-    getHand: getHand
+    getHand: getHand,
+    score: 0
 };
 const player2 = {
     name: 'Chelsea',
-    getHand: getHand
+    getHand: getHand,
+    score: 0
 };
 
-// define playRound function
+//update the log area
+function logMessage(message) {
+    const log = document.getElementById('gameLog');
+    log.innerHTML += message + '<br>';
+    log.scrollTop = log.scrollHeight;
+}
+
+// Define playRound function
 function playRound(player1, player2) {
     const hand1 = player1.getHand();
     const hand2 = player2.getHand();
@@ -27,7 +36,6 @@ function playRound(player1, player2) {
     if (hand1 === hand2) {
         console.log("it's a tie!");
         return null;
-
     } else if (
         (hand1 === 'rock' && hand2 === 'scissors') ||
         (hand1 === 'scissors' && hand2 === 'paper') ||
@@ -39,71 +47,25 @@ function playRound(player1, player2) {
         console.log(`${player2.name} wins!`);
         return player2;
     }
-    //updateScores
-    function updateScores(player1, player2, winner) {
-        document.getElementById('score1').textContent = player1.score;
-        document.getElementById('score2').textContent = player2.score;
-
-        if (winner) {
-            document.getElementById('winnerName').textContent = winner.name;
-        }else{
-            document.getElementById('winnerName').textContent = "It's a tie!";
-        }
-        
-    }
 }
 
-//  playGame function
-function playGame(player1, player2, playUntil) {
-    let score1 = 0;
-    let score2 = 0;
+console.log(playRound(player1, player2));
 
-    while (score1 < playUntil && score2 < playUntil) {
-        const winner = playRound(player1, player2);
-        if (winner === player1) {
-            score1++;
-        } else if (winner === player2) {
-            score2++;
-        }
-        console.log(`${player1.name}: ${score1}, ${player2.name}: ${score2}`);
+// Function to update scores and winner display
+function updateScores(player1, player2, winner) {
+    document.getElementById('score1').textContent = player1.score;
+    document.getElementById('score2').textContent = player2.score;
 
-        //update scores
-        updateScores(player1, player2, winner);
-    }
-
-    if (score1 === playUntil) {
-        console.log(`${player1.name} wins the game!`);
-        return player1;
+    if (winner) {
+        document.getElementById('winnerName').textContent = winner.name;
     } else {
-        console.log(`${player2.name} wins the game!`);
-        return player2;
+        document.getElementById('winnerName').textContent = "It's a tie!";
     }
 }
-
-// define playTournament function
-function playTournament(player1, player2, player3, player4, playUntil) {
-    const winner1 = playGame(player1, player2, playUntil);
-    const winner2 = playGame(player3, player4, playUntil);
-
-    const tournamentWinner = playGame(winner1, winner2, playUntil);
-
-    console.log(`${tournamentWinner.name} is the world champion!`);
-}
+console.log(updateScores(player1, player2, null));
 
 
-const player3 = {
-    name: 'Chloe',
-    getHand: getHand
-};
-const player4 = {
-    name: 'Christina',
-    getHand: getHand
-};
-
-//play game 
-console.log("Starting a game between Brittany and Chelsea to 3 wins:");
-playGame(player1, player2, 3);
-
-//play tournament
-console.log("Starting a tournament:");
-playTournament(player1, player2, player3, player4,3);
+// Event listener for play button
+/*document.getElementById('playButton').addEventListener('click', () => {
+    playGame(player1, player2, 3);
+});*/
